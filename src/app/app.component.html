@@ -1,10 +1,19 @@
-<div class="row" style="padding: 20px;">
-  <div class="card col-sm-3"   style="width: 18rem;" *ngFor=" let item of allPhotos" style="margin: 10px; ">
-    <img class="card-img-top" [src]="item.thumbnailUrl" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">{{item.title}}</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container text-center">
+    <h1 class="display-4">TODO LIST</h1>
   </div>
+</div>
+<div class="row">
+  <div *ngFor="let item of todoList "  class="col-sm-3">
+    <div class="input-group mb-3 "  >    <!-- *ngIf="item.completed === true" -->
+      <div class="input-group-prepend" >
+        <div class="input-group-text">
+          <input type="checkbox" aria-label="Checkbox for following text input" [checked]="item.completed === true"  >
+        </div>
+      </div>
+      <input type="text" class="form-control" aria-label="Text input with checkbox" [value]="item.title">
+    </div>
+    
+  </div>
+  
 </div>
