@@ -11,12 +11,13 @@ export class AppComponent implements OnInit {
   title = 'jobProject';
   todoList: any;
   // allPhotos= [];
-  
+  todos=[];
+  completedTodos=[];
 constructor( private _todos: TodosService){
 
 }
   ngOnInit(): void {
-    this.gettodos();
+    // this.gettodos();
   }
 
     // getPhotos(){
@@ -27,11 +28,25 @@ constructor( private _todos: TodosService){
     //   })
     // }
 
-    gettodos(){
-      this._todos.gettodos().subscribe( res => {
-        console.log(res);
-        this.todoList= res;
+    // gettodos(){
+    //   this._todos.gettodos().subscribe( res => {
+    //     console.log(res);
+    //     this.todoList= res;
         
-      })
+    //   })
+    // }
+
+
+    addNewTodo(data){
+      console.log(data);
+      this.todos.push(data);
+    }
+
+
+    completeTheTask(event){
+      console.log(event);
+      this.completedTodos.push(event)
+      this.todos= this.todos.filter (item => item !== event)
+      
     }
 }

@@ -1,19 +1,54 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container text-center">
-    <h1 class="display-4">TODO LIST</h1>
+    <div class="input-group d-flex" style="justify-content: center;">
+      <input type="text" placeholder="Enter items" #todo>
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" style=" background-color: darkgray;color: #fff;" (click)="addNewTodo(todo.value); todo.value=''">Add Item</button>
+    </div>
+  </div>
   </div>
 </div>
-<div class="row">
-  <div *ngFor="let item of todoList "  class="col-sm-3">
-    <div class="input-group mb-3 "  >    <!-- *ngIf="item.completed === true" -->
-      <div class="input-group-prepend" >
-        <div class="input-group-text">
-          <input type="checkbox" aria-label="Checkbox for following text input" [checked]="item.completed === true"  >
-        </div>
-      </div>
-      <input type="text" class="form-control" aria-label="Text input with checkbox" [value]="item.title">
+
+
+<div class="row " style="    margin: 0;">
+  <div class="col-md-6 " style="padding: 40px;">
+    <div class="jumbotron jumbotron-fluid text-center">
+      <h3>Items Incompleted</h3>
     </div>
     
+    <div class="row">
+      <div *ngFor="let item of todos "  class="col-sm-12">
+        <div class="input-group mb-3 "  >   
+          <div class="input-group-prepend" >
+            <div class="input-group-text">
+              <input type="checkbox" aria-label="Checkbox for following text input" (change)="completeTheTask(item)">
+            </div>
+          </div>
+          <input type="text" class="form-control" aria-label="Text input with checkbox" [value]="item">
+        </div>
+        
+      </div>
+      
+    </div>
   </div>
-  
+  <div class="col-md-6" style="padding: 40px;">
+    <div class="jumbotron jumbotron-fluid text-center">
+
+    <h3>Items completed</h3>
+    </div>
+    <div class="row">
+      <div *ngFor="let item of completedTodos "  class="col-sm-12">
+        <div class="input-group mb-3 " >   
+          <div class="input-group-prepend" >
+            <div class="input-group-text">
+              <input type="checkbox" aria-label="Checkbox for following text input" checked  >
+            </div>
+          </div>
+          <input type="text" class="form-control" aria-label="Text input with checkbox" [value]="item">
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
 </div>
